@@ -1924,6 +1924,8 @@ Y1980 Y1981 Y1982 Y1983 Y1984 Y1985 Y1986 Y1987 Y1988 Y1989
 Y1999 Y2000 Y2001 Y2002 Y2003 Y2004 Y2005 Y2006 Y2007 Y2008
       Y2009 Y2010 Y2011 Y2012 Y2013 Y2014 Y2015 Y2016 Y2017;
 
+if final_lat > 33.87 and final_long > -77.958910 then comments = catx(' @ ',comments,'Fort Fisher');
+
 keep  nest final_lat final_long access observed species pit ae1 lff ae2 rff ae3 
       cnt cnn cw snt snn sw biopsy incubation rel_eggs eggs_taken hatched unhatched
       live dead pipped disHT disVeg comments date time orig_lat orig_long treatment
@@ -1937,4 +1939,10 @@ access = compress(access);
 reloc_access = compress(reloc_access);
 final_access = compress(final_access);
 
+run;
+
+proc export data=Lj1
+outfile="C:\Users\lms2755\Desktop\Turtles\corrected_defaults.csv"
+dbms=csv
+replace;
 run;
